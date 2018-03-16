@@ -1,0 +1,55 @@
+CONST ----------------------------
+
+
+const ENVIRONMENT -> development 
+
+const CI_VERSION -> 3.1, 2.1 , ...
+
+
+
+
+CODE -----------------------------
+
+
+--------------------------------> security <--------------------------------------------
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+
+
+
+--------------------------------> create controller <-----------------------------------
+
+class >>>name Class<<< extends CI_Controller {
+
+	public function index() {
+
+		$this->load->view(" >>>name view file<<< ");
+
+	}
+
+}
+
+
+
+
+--------------------------------> create model <-----------------------------------
+
+class first_model extends CI_Model {
+
+	public function get_article() {
+
+		$this->db->limit("3");
+		// $this->db->where("id", 2);
+		$this->db->order_by("id", "RANDOM"); //desc -- ASC -- RANDOM
+
+
+		$query = $this->db->get("articles");
+		return $query->result_array();
+
+	}
+
+}
+
+
